@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Wamiz\OneshotCommands\Tests\Fixtures\App\TestKernel;
+
+require dirname(__DIR__, 4).'/vendor/autoload.php';
+
+$kernel = new TestKernel((string) (getenv('APP_ENV') ?: 'test'), false);
+
+exit(new Application($kernel)->run());

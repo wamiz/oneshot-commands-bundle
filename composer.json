@@ -1,0 +1,65 @@
+{
+    "name": "wamiz/oneshot-commands-bundle",
+    "description": "Run Symfony console commands marked as one-shot exactly once, and keep track of their last run.",
+    "type": "symfony-bundle",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.4",
+        "symfony/clock": "^7.4 || ^8.0",
+        "symfony/config": "^7.4 || ^8.0",
+        "symfony/console": "^7.4 || ^8.0",
+        "symfony/dependency-injection": "^7.4 || ^8.0",
+        "symfony/event-dispatcher": "^7.4 || ^8.0",
+        "symfony/http-kernel": "^7.4 || ^8.0",
+        "symfony/process": "^7.4 || ^8.0"
+    },
+    "require-dev": {
+        "doctrine/dbal": "^4.5",
+        "doctrine/doctrine-bundle": "^2.18 || ^3.0",
+        "doctrine/orm": "^3.7",
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "pestphp/pest": "^4.0",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0",
+        "symfony/filesystem": "^7.4 || ^8.0",
+        "symfony/framework-bundle": "^7.4 || ^8.0"
+    },
+    "suggest": {
+        "doctrine/dbal": "^4.5, required by the default DBAL execution store",
+        "doctrine/orm": "^3.7, registers the execution table in the ORM schema, so doctrine:migrations:diff picks it up"
+    },
+    "conflict": {
+        "doctrine/dbal": "<4.5",
+        "doctrine/orm": "<3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wamiz\\OneshotCommands\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wamiz\\OneshotCommands\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "symfony/flex": true
+        }
+    },
+    "scripts": {
+        "cs": "php-cs-fixer fix --dry-run --diff",
+        "cs:fix": "php-cs-fixer fix",
+        "phpstan": "phpstan analyse --memory-limit=1G",
+        "test": "pest",
+        "test:coverage": "XDEBUG_MODE=coverage pest --coverage --min=100",
+        "ci": [
+            "@cs",
+            "@phpstan",
+            "@test:coverage"
+        ]
+    }
+}
