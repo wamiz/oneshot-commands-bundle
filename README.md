@@ -115,3 +115,7 @@ Durations are therefore measured in two ways: around the command itself for a ru
 ```bash
 composer ci   # php-cs-fixer, PHPStan (level max), Pest with 100% coverage
 ```
+
+## License
+
+Proprietary, all rights reserved: see [LICENSE](LICENSE). The source code is public for reference only; using, copying or distributing it requires the prior written permission of Wamiz.
